@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماڵ-سێرڤیس | haryad 7iza</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-center items-center selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- SPLASH SCREEN / LOGIN ENTRY -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center p-6 text-center transition-all duration-500">
+        <div class="absolute -top-24 -left-24 w-72 h-72 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="glass-card p-8 rounded-3xl max-w-sm w-full glow-effect relative overflow-hidden border border-cyan-500/30">
+            <div class="w-20 h-20 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl mx-auto flex items-center justify-center text-3xl text-slate-950 font-black mb-6 shadow-xl shadow-cyan-500/30">
+                <i class="fa-solid fa-house-chimney"></i>
+            </div>
+            
+            <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">سیستەمی پێشکەوتوو</span>
+            <h1 class="text-2xl font-extrabold text-white mt-4 mb-2">haryad 7iza</h1>
+            <p class="text-xs text-slate-400 mb-8 leading-relaxed">بەخێربێن بۆ پلاتفۆرمی خزمەتگوزارییەکانی ماڵ لە سلێمانی. تکایە کلیک بکە بۆ چوونەژوورەوە.</p>
+
+            <button onclick="enterSystem()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold py-3.5 px-6 rounded-xl transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 group">
+                <span>چوونە ژوورەوە بۆ سیستم</span>
+                <i class="fa-solid fa-arrow-left-long group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+        
+        <p class="text-xs text-slate-600 mt-6">Versoin 2.4.0 • Secured & Encrypted UI</p>
+    </div>
+
+
+    <!-- MAIN APP WRAPPER (Hidden initially) -->
+    <div id="main-app" class="hidden w-full max-w-md min-h-screen flex flex-col bg-slate-950 shadow-2xl relative">
+        
+        <!-- Header -->
+        <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-40 px-4 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-lg">
+                    <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm text-white">ماڵ-سێرڤیس <span class="text-xs text-cyan-400 font-normal">| haryad</span></h1>
+                    <p class="text-[11px] text-slate-400 flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-cyan-400"></i> سلێمانی، بەختیاری
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+                <button class="w-9 h-9 rounded-full bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-white transition">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-xs text-slate-950 border border-cyan-300 shadow-md">
+                    H7
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Body -->
+        <main class="flex-1 p-4 pb-28 overflow-y-auto">
+            
+            <!-- TAB 1: HOME -->
+            <div id="tab-home" class="tab-pane space-y-5">
+                <!-- Welcome Banner -->
+                <div class="glass-card rounded-2xl p-5 relative overflow-hidden glow-effect">
+                    <div class="absolute -left-6 -bottom-6 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl pointer-events-none"></div>
+                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded font-bold">هەریاد حیزە پڕۆفایلی چالاکە</span>
+                    <h2 class="text-lg font-extrabold mt-2 mb-1 text-white">سڵاو، haryad 7iza! 👋</h2>
+                    <p class="text-xs text-slate-300 mb-4">ئەمڕۆ چ خزمەتگوزارییەکی ماڵ پێویستە؟</p>
+                    <div class="relative">
+                        <input type="text" placeholder="گەڕان بەدوای کارەباچی، بۆری ئاو..." class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 pr-10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition">
+                        <i class="fa-solid fa-search absolute right-3.5 top-3.5 text-slate-500 text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Promo Banner -->
+                <div class="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-2xl p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-white">داشکانی تایبەتی هەریاد</h4>
+                            <p class="text-[11px] text-slate-400">٢٠٪ داشکان بۆ یەکەم داواکاری</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-1 rounded-lg font-bold">چالاکە</span>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-sm text-white">بەشە سەرەکییەکان</h3>
+                        <span class="text-[11px] text-cyan-400 cursor-pointer hover:underline">بینینی هەمووی</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2.5">
+                        <div class="glass-card hover:border-cyan-500/50 transition rounded-2xl p-3 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-bolt text-base"></i>
+                            </div>
+                            <span class="text-[11px] font-medium text-slate-200">کارەبا</span>
+                        </div>
+                        <div class="glass-card hover:border-cyan-500/50 transition rounded-2xl p-3 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="w-11 h-11 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-faucet-drip text-base"></i>
+                            </div>
+                            <span class="text-[11px] font-medium text-slate-200">بۆری ئاو</span>
+                        </div>
+                        <div class="glass-card hover:border-cyan-500/50 transition rounded-2xl p-3 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-broom text-base"></i>
+                            </div>
+                            <span class="text-[11px] font-medium text-slate-200">پاککردنەوە</span>
+                        </div>
+                        <div class="glass-card hover:border-cyan-500/50 transition rounded-2xl p-3 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="w-11 h-11 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-snowflake text-base"></i>
+                            </div>
+                            <span class="text-[11px] font-medium text-slate-200">ساردکەرەوە</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Providers -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-sm text-white">نزیترین پێشەگەرەکان</h3>
+                        <span class="text-[11px] text-cyan-400">زۆرترین ڕەیتینگ</span>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <div class="glass-card rounded-2xl p-3.5 flex items-center justify-between hover:border-cyan-500/40 transition">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="relative">
+                                    <div class="w-12 h-12 rounded-full bg-slate-800 border-2 border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-sm">
+                                        ئـ
+                                    </div>
+                                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-white flex items-center gap-1">
+                                        ئارام ئەحمەد <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                                    </h4>
+                                    <p class="text-[11px] text-slate-400">کارەباچی خانوو</p>
+                                    <div class="flex items-center gap-1 mt-0.5 text-[11px] text-amber-400">
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                        <span class="font-bold text-white">4.9</span>
+                                        <span class="text-slate-500">(124 کار)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="alert('داواکارییەکەت نێردرا!')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-1.5 rounded-xl text-[11px] transition shadow-md shadow-cyan-500/20">
+                                داواکردن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: REQUESTS -->
+            <div id="tab-requests" class="tab-pane hidden space-y-4">
+                <h3 class="font-extrabold text-base text-white mb-2">داواکارییەکانی من</h3>
+                
+                <div class="glass-card rounded-2xl p-4 border border-cyan-500/30">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">جێبەجێکراو</span>
+                            <h4 class="font-bold text-xs text-white mt-1.5">چاککردنەوەی تابلۆی کارەبا</h4>
+                        </div>
+                        <span class="text-[10px] text-slate-400">دوێنێ، 04:30 پ.ن</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">پیشەگەر: ئارام ئەحمەد</p>
+                    <div class="mt-3 pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+                        <span class="text-cyan-400 font-bold">٢٥,٠٠٠ دینار</span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star"></i> 5.0</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-4 border border-amber-500/30">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full font-bold">لە ڕێگادایە</span>
+                            <h4 class="font-bold text-xs text-white mt-1.5">گۆڕینی بۆری ئاوی مەتبەخ</h4>
+                        </div>
+                        <span class="text-[10px] text-slate-400">ئەمڕۆ</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">پیشەگەر: ڕەوەند کەمال</p>
+                    <div class="mt-3 pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+                        <span class="text-cyan-400 font-bold">١٥,٠٠٠ دینار</span>
+                        <span class="text-slate-400 text-[11px]">چاوەڕێی گەیشتن...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: WALLET -->
+            <div id="tab-wallet" class="tab-pane hidden space-y-4">
+                <h3 class="font-extrabold text-base text-white mb-2">جزدانی دیجیتالی</h3>
+                
+                <div class="bg-gradient-to-tr from-cyan-950 via-slate-900 to-blue-950 border border-cyan-500/40 rounded-2xl p-5 glow-effect">
+                    <p class="text-xs text-cyan-300 font-medium">کۆی هاوسەنگی بەردەست</p>
+                    <h2 class="text-2xl font-black text-white mt-1 mb-4">٥٠,٠٠٠ <span class="text-xs font-normal text-slate-400">دینار</span></h2>
+                    <div class="flex gap-2">
+                        <button onclick="alert('پڕکردنەوەی جزدان سەرکەوتوو بوو!')" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">پڕکردنەوەی باڵانس</button>
+                        <button onclick="alert('گواستنەوە چالاکە')" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs transition border border-slate-700">ڕاپۆرتی دارایی</button>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-4">
+                    <h4 class="font-bold text-xs text-slate-400 mb-3">دوایین جووڵەکانی جزدان</h4>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800/80">
+                            <div>
+                                <p class="font-bold text-white">داشکانی ۲٠٪</p>
+                                <span class="text-[10px] text-slate-500">پادشتی بەکارهێنەر</span>
+                            </div>
+                            <span class="text-emerald-400 font-bold">+٥,٠٠٠ د.ع</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-white">کرێی خزمەتگوزاری</p>
+                                <span class="text-[10px] text-slate-500">ئارام ئەحمەد</span>
+                            </div>
+                            <span class="text-red-400 font-bold">-٢٥,٠٠٠ د.ع</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: PROFILE -->
+            <div id="tab-profile" class="tab-pane hidden space-y-4">
+                <div class="glass-card rounded-2xl p-5 text-center">
+                    <div class="w-20 h-20 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-full mx-auto flex items-center justify-center text-2xl font-black text-slate-950 mb-3 shadow-lg shadow-cyan-500/30">
+                        H7
+                    </div>
+                    <h3 class="font-extrabold text-base text-white">haryad 7iza</h3>
+                    <p class="text-xs text-cyan-400 mt-0.5">ئەندامی پلە باڵا • سلێمانی</p>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden divide-y divide-slate-800 text-xs">
+                    <div class="p-3.5 flex justify-between items-center hover:bg-slate-900/50 cursor-pointer transition">
+                        <span class="text-slate-200 font-medium"><i class="fa-solid fa-user-pen text-cyan-400 ml-2"></i> دەستکاری پڕۆفایل</span>
+                        <i class="fa-solid fa-chevron-left text-slate-600"></i>
+                    </div>
+                    <div class="p-3.5 flex justify-between items-center hover:bg-slate-900/50 cursor-pointer transition">
+                        <span class="text-slate-200 font-medium"><i class="fa-solid fa-location-dot text-cyan-400 ml-2"></i> ناونیشانە پاشەکەوتکراوەکان</span>
+                        <i class="fa-solid fa-chevron-left text-slate-600"></i>
+                    </div>
+                    <div class="p-3.5 flex justify-between items-center hover:bg-slate-900/50 cursor-pointer transition">
+                        <span class="text-slate-200 font-medium"><i class="fa-solid fa-shield-halved text-cyan-400 ml-2"></i> ئاسایش و وشەی تێپەڕ</span>
+                        <i class="fa-solid fa-chevron-left text-slate-600"></i>
+                    </div>
+                    <div onclick="location.reload()" class="p-3.5 flex justify-between items-center hover:bg-red-500/10 cursor-pointer transition text-red-400 font-bold">
+                        <span><i class="fa-solid fa-right-from-bracket ml-2"></i> دەرچوون لە هەژمار</span>
+                        <i class="fa-solid fa-chevron-left text-red-500"></i>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation Bar (Interactive JS) -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 py-3 px-6 flex justify-around items-center z-50 max-w-md mx-auto">
+            <button onclick="switchTab('tab-home', this)" class="nav-btn flex flex-col items-center text-cyan-400 text-xs transition">
+                <i class="fa-solid fa-house text-base mb-1"></i>
+                <span class="text-[10px]">سەرەکی</span>
+            </button>
+            <button onclick="switchTab('tab-requests', this)" class="nav-btn flex flex-col items-center text-slate-400 hover:text-cyan-400 text-xs transition">
+                <i class="fa-solid fa-clock-rotate-left text-base mb-1"></i>
+                <span class="text-[10px]">داواکانم</span>
+            </button>
+            <button onclick="switchTab('tab-wallet', this)" class="nav-btn flex flex-col items-center text-slate-400 hover:text-cyan-400 text-xs transition">
+                <i class="fa-solid fa-wallet text-base mb-1"></i>
+                <span class="text-[10px]">جزدان</span>
+            </button>
+            <button onclick="switchTab('tab-profile', this)" class="nav-btn flex flex-col items-center text-slate-400 hover:text-cyan-400 text-xs transition">
+                <i class="fa-solid fa-user text-base mb-1"></i>
+                <span class="text-[10px]">پڕۆفایل</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <!-- JavaScript For Tabs & Splash Transition -->
+    <script>
+        function enterSystem() {
+            const splash = document.getElementById('splash-screen');
+            const mainApp = document.getElementById('main-app');
+            
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                mainApp.classList.remove('hidden');
+            }, 400);
+        }
+
+        function switchTab(tabId, element) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            
+            // Show target tab
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset navigation active state
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-cyan-400');
+                btn.classList.add('text-slate-400');
+            });
+
+            // Activate current button
+            element.classList.remove('text-slate-400');
+            element.classList.add('text-cyan-400');
+        }
+    </script>
+</body>
+</html>
